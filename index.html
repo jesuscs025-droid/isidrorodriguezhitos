@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isidro Rodríguez Hitos — Abogado en Granada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0D1B2A;
+      --navy-mid: #132238;
+      --navy-light: #1a2e47;
+      --cream: #F5F0E8;
+      --gold: #C8A84B;
+      --gold-light: #E4C97A;
+      --gold-faint: rgba(200,168,75,0.08);
+      --gray: #6B7280;
+      --gray-light: #9CA3AF;
+      --black: #050A0F;
+      --white: #FFFFFF;
+      --available: #2E7D5C;
+      --available-bg: rgba(46,125,92,0.12);
+      --booked: rgba(200,168,75,0.08);
+      --border: rgba(200,168,75,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13, 27, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200, 168, 75, 0.2);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background:
+        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=80')
+        center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(5, 10, 15, 0.82) 0%,
+          rgba(13, 27, 42, 0.88) 50%,
+          rgba(5, 10, 15, 0.90) 100%
+        ),
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(200,168,75,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200,168,75,0.06) 0%, transparent 60%);
+    }
+
+    .hero-eyebrow {
+      font-size: 1.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .hero-title .first-name {
+      display: block;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 0.55em;
+      letter-spacing: 0.1em;
+      color: var(--gray-light);
+      margin-bottom: 0.2em;
+    }
+
+    /* Animated signature underline */
+    .signature-line {
+      display: block;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      margin: 0.5rem auto 0;
+      animation: signatureDraw 1.4s cubic-bezier(0.4,0,0.2,1) 0.6s forwards;
+      border-radius: 2px;
+    }
+
+    @keyframes signatureDraw {
+      to { width: 100%; }
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      color: var(--gray-light);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.7;
+      text-align: justify;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(200,168,75,0.1);
+      border: 1px solid rgba(200,168,75,0.3);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.9rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      padding: 0.9rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid rgba(245,240,232,0.3);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(245,240,232,0.1);
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+    /* ABOUT */
+    .about {
+      background: var(--cream);
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .value-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .about-contact-card {
+      background: var(--navy);
+      padding: 2.5rem;
+      border-radius: 4px;
+      position: sticky;
+      top: 5rem;
+    }
+
+    .contact-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--cream);
+      font-size: 0.9rem;
+    }
+
+    .contact-icon {
+      width: 36px; height: 36px;
+      background: rgba(200,168,75,0.15);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .contact-info-row a {
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info-row a:hover { color: var(--gold-light); }
+
+    .colegiado-badge {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(245,240,232,0.1);
+      font-size: 0.8rem;
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
+
+    .colegiado-badge strong { color: var(--gold-light); }
+
+    .btn-contact-card {
+      display: block;
+      text-align: center;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 2px;
+      margin-top: 1.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .btn-contact-card:hover { background: var(--gold-light); }
+
+    /* SPECIALTIES */
+    .specialties {
+      background: var(--navy);
+      padding: 6rem 2rem;
+    }
+
+    .specialties .section-title { color: var(--cream); }
+    .specialties .section-eyebrow { color: var(--gold); }
+
+    .specialties-intro {
+      color: var(--gray-light);
+      max-width: 1300px;
+      line-height: 1.7;
+      margin-top: 1rem;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      margin-top: 3.5rem;
+      background: rgba(245,240,232,0.07);
+      border: 1px solid rgba(245,240,232,0.07);
+    }
+
+    .spec-item {
+      background: var(--navy-mid);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.2s;
+      cursor: default;
+    }
+
+    .spec-item:hover {
+      background: rgba(200,168,75,0.08);
+    }
+
+    .spec-icon {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .spec-name {
+      color: var(--cream);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .spec-item.primary .spec-name {
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .spec-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* REVIEWS */
+    .reviews {
+      background: var(--cream);
+      padding: 6rem 2rem;
+    }
+
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .rating-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .rating-details .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 0.1em; }
+    .rating-details .count { font-size: 0.8rem; color: var(--gray); margin-top: 0.2rem; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(13,27,42,0.08);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .review-card:hover {
+      box-shadow: 0 8px 32px rgba(13,27,42,0.08);
+      transform: translateY(-2px);
+    }
+
+    .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; }
+
+    .review-text {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin: 0.8rem 0 1.2rem;
+      font-style: italic;
+    }
+
+    .review-text::before { content: '"'; }
+    .review-text::after { content: '"'; }
+
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reviewer-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .review-spec {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .review-date {
+      font-size: 0.75rem;
+      color: var(--gray-light);
+    }
+
+    /* HOW */
+    .how {
+      background: #0D1B2A;
+      padding: 6rem 2rem;
+    }
+
+    .how .section-title { color: var(--cream); }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .step {
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+    }
+
+    .step::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transition: width 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .step:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200,168,75,0.55);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 4px 12px rgba(200,168,75,0.08);
+      background: rgba(200,168,75,0.04);
+    }
+
+    .step:hover::after {
+      width: 100%;
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(200,168,75,0.15);
+      line-height: 1;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      transition: color 0.35s ease, transform 0.35s ease;
+    }
+
+    .step:hover .step-num {
+      color: rgba(200,168,75,0.32);
+      transform: scale(1.08) translateY(-2px);
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      transition: color 0.3s ease;
+    }
+
+    .step:hover .step-title {
+      color: var(--gold-light);
+    }
+
+    .step-desc {
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      transition: color 0.3s ease;
+    }
+
+    .step:hover .step-desc {
+      color: #c8cdd4;
+    }
+
+    /* CONTACT FORM */
+    .contact {
+      background: var(--cream);
+      padding: 6rem 2rem;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-side p {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-detail {
+      margin-top: 2rem;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cd-icon {
+      width: 42px; height: 42px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .cd-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .cd-value {
+      font-size: 0.95rem;
+      color: var(--navy);
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+
+    .cd-value a {
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cd-value a:hover { color: var(--gold); }
+
+    /* Form */
+    .form-card {
+      background: var(--navy);
+      padding: 3rem;
+      border-radius: 4px;
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      color: var(--gray-light);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(245,240,232,0.06);
+      border: 1px solid rgba(245,240,232,0.12);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group select option { background: var(--navy); color: var(--cream); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.95rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--gold-light); }
+
+    .form-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--gray-light);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-info {
+      color: var(--gray);
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+
+    .footer-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: rgba(107,114,128,0.6);
+    }
+
+
+    .about-photo-wrap {
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-photo {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      max-height: 710px;
+      border-radius: 4px;
+      filter: grayscale(8%);
+    }
+
+    .nav-logo {
+      height: 86px;
+      width: auto;
+      display: block;
+      background: none;
+      mix-blend-mode: screen;
+    }
+    .footer-logo-wrap {
+      margin-bottom: 1rem;
+    }
+    .footer-logo {
+      height: 260px;
+      width: auto;
+      display: inline-block;
+      background: none;
+      mix-blend-mode: screen;
+    }
+
+    /* BRAND BANNER */
+    .brand-banner {
+      width: 100%;
+      background: #0a1525;
+      line-height: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 2rem;
+    }
+    .brand-banner-img {
+      max-width: 900px;
+      width: 100%;
+      display: block;
+      height: auto;
+      object-fit: contain;
+    }
+
+
+
+  /* ── HAMBURGUESA ── */
+  .nav-hamburger {
+    display: none;
+  }
+
+  /* Responsive — Mobile */
+  /* ═══════════════════════════════════════════════
+     RESPONSIVE — MÓVIL (≤768px)
+     ═══════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    html, body { overflow-x: hidden; }
+
+    .spec-cards-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      min-height: 60px;
+    }
+
+    .nav-brand { grid-column: 1; }
+
+    .nav-logo { height: 50px; }
+
+    .nav-links { display: none; }
+
+    .nav-mobile-cta {
+      grid-column: 3;
+      display: inline-flex !important;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.45rem 0.85rem;
+      border-radius: 2px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-hamburger {
+      grid-column: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: transparent;
+      border: 1px solid rgba(200,168,75,0.3);
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-links {
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: rgba(13, 27, 42, 0.98);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      padding: 1.5rem 1.5rem 2rem;
+      gap: 0;
+      border-bottom: 1px solid rgba(200,168,75,0.2);
+      z-index: 99;
+      list-style: none;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(200,168,75,0.08);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links li:last-child { display: none; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5.5rem 1.2rem 3rem;
+      min-height: 100svh;
+      align-items: flex-start;
+      padding-top: 5.5rem;
+    }
+    .hero-content { max-width: 100%; width: 100%; }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+    .hero-title { font-size: clamp(2rem, 9vw, 3rem); line-height: 1.1; }
+    .hero-sub {
+      font-size: 0.88rem;
+      margin-top: 1rem;
+      text-align: left;
+    }
+    .hero-badges { gap: 0.4rem; margin-top: 1.2rem; }
+    .badge { font-size: 0.62rem; padding: 0.3rem 0.65rem; }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.6rem;
+      margin-top: 1.8rem;
+    }
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      max-width: 100%;
+      justify-content: center;
+      text-align: center;
+      padding: 0.85rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    .hero-stats {
+      gap: 1rem;
+      padding-top: 1.8rem;
+      margin-top: 2rem;
+      justify-content: space-around;
+    }
+    .stat-num { font-size: 1.6rem; }
+    .stat-label { font-size: 0.62rem; }
+
+      /* ── SOBRE MÍ (ABOUT) ── */
+      .about { padding: 3rem 1.2rem; }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-contact-card {
+        position: static;
+        padding: 1.8rem 1.4rem;
+      }
+      .about-values { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+      .about-photo { max-height: 260px; object-position: center top; }
+      .about-photo-wrap { margin-bottom: 1rem; }
+
+      /* ── ESPECIALIDADES ── */
+      .specialties { padding: 3rem 1.2rem; }
+      .specialties-intro { font-size: 0.88rem; }
+      .spec-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+      }
+      .spec-item { padding: 1.5rem 1rem; }
+
+      /* ── OPINIONES (REVIEWS) ── */
+      .reviews { padding: 3rem 1.2rem; }
+      .reviews-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .rating-summary { gap: 0.8rem; }
+      .rating-big { font-size: 2.2rem; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .review-card { padding: 1.5rem; }
+      .review-meta { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+
+      /* ── CÓMO FUNCIONA (HOW) ── */
+      .how { padding: 3rem 1.2rem; }
+      .how-steps {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .step { padding: 1.6rem 1.2rem; }
+      .step-num { font-size: 2.5rem; top: 1rem; right: 1rem; }
+
+      /* ── CONTACTO ── */
+      .contact { padding: 3rem 1.2rem; }
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .form-card { padding: 1.6rem 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-detail-item { gap: 0.8rem; }
+      .cd-icon { width: 36px; height: 36px; font-size: 0.9rem; }
+
+      /* ── MAPA ── */
+      .map-header { padding: 2.5rem 1.2rem 1.5rem; }
+      .map-address-text { font-size: 0.88rem; }
+      .map-pin-card {
+        position: static;
+        max-width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        padding: 1rem 1.2rem;
+      }
+
+      /* ── FOOTER ── */
+      .footer-logo { height: 120px; }
+      .footer-links { gap: 0.8rem; font-size: 0.75rem; }
+      .footer-info { font-size: 0.75rem; line-height: 1.7; }
+      .footer-name { font-size: 1.1rem; }
+
+      /* ── TIPOGRAFÍA GLOBAL ── */
+      .section-title { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+      .section-eyebrow { font-size: 0.65rem; }
+
+      /* ── BRAND BANNER ── */
+      .brand-banner { padding: 2rem 1.2rem; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE — MÓVIL PEQUEÑO (≤480px)
+       ═══════════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      /* NAV */
+      nav { padding: 0.6rem 0.9rem; }
+      .nav-logo { height: 34px; }
+      .nav-mobile-cta {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.7rem;
+      }
+
+      /* HERO */
+      .hero { padding: 5rem 1rem 2.5rem; }
+      .hero-eyebrow { font-size: 0.65rem; }
+      .hero-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+      .hero-sub { font-size: 0.82rem; }
+      .hero-stats { gap: 0.6rem; }
+      .stat-num { font-size: 1.4rem; }
+      .hero-badges { justify-content: flex-start; }
+
+      /* ABOUT */
+      .about { padding: 2.5rem 1rem; }
+      .about-contact-card { padding: 1.4rem 1rem; }
+      .about-values { grid-template-columns: 1fr; }
+      .contact-info-row { font-size: 0.85rem; }
+
+      /* SPECIALTIES */
+      .specialties { padding: 2.5rem 1rem; }
+      .spec-grid { grid-template-columns: repeat(2, 1fr); }
+      .spec-item { padding: 1.2rem 0.8rem; }
+      .spec-icon { font-size: 1.2rem; }
+      .spec-name { font-size: 0.78rem; }
+
+      /* REVIEWS */
+      .reviews { padding: 2.5rem 1rem; }
+      .review-card { padding: 1.2rem; }
+      .review-text { font-size: 0.85rem; }
+      .rating-big { font-size: 2rem; }
+
+      /* HOW */
+      .how { padding: 2.5rem 1rem; }
+      .step { padding: 1.4rem 1rem; }
+      .step-title { font-size: 1.05rem; }
+      .step-desc { font-size: 0.85rem; }
+
+      /* CONTACT */
+      .contact { padding: 2.5rem 1rem; }
+      .form-card { padding: 1.3rem 1rem; }
+      .form-group label { font-size: 0.7rem; }
+      .form-group input,
+      .form-group select,
+      .form-group textarea { font-size: 0.85rem; padding: 0.65rem 0.85rem; }
+      .form-submit { font-size: 0.85rem; padding: 0.85rem; }
+
+      /* SECTION TYPOGRAPHY */
+      .section-title { font-size: clamp(1.4rem, 7vw, 2rem); }
+
+      /* FOOTER */
+      .footer-logo { height: 100px; }
+      .footer-links { gap: 0.6rem; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE — MÓVIL MUY PEQUEÑO (≤400px)
+       ═══════════════════════════════════════════════ */
+    @media (max-width: 400px) {
+      .spec-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 1.8rem; }
+      .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.08em; }
+      .about-values { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .signature-line { animation: none; width: 100%; }
+    }
+
+    /* MAP */
+    .map-section { background: var(--navy); }
+    .map-header { padding: 4rem 2rem 2rem; }
+    .map-address-text { color: var(--gray-light); margin-top: 0.5rem; font-size: 0.95rem; }
+    .map-wrapper { position: relative; }
+    .map-pin-card {
+      position: absolute;
+      top: 1.5rem; left: 1.5rem;
+      background: var(--navy);
+      border: 1px solid rgba(200,168,75,0.3);
+      border-radius: 4px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 10;
+      max-width: 340px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .pin-icon { font-size: 1.5rem; flex-shrink:0; }
+    .pin-info { display:flex; flex-direction:column; gap:0.15rem; }
+    .pin-info strong { color: var(--cream); font-size:0.9rem; }
+    .pin-info span { color: var(--gray-light); font-size:0.8rem; }
+    .pin-directions {
+      display:inline-block;
+      margin-top:0.5rem;
+      font-size:0.75rem;
+      font-weight:600;
+      color:var(--gold);
+      text-decoration:none;
+      letter-spacing:0.05em;
+      white-space:nowrap;
+    }
+    .pin-directions:hover { color: var(--gold-light); }
+    @media (max-width: 600px) {
+      .map-pin-card {
+        position: static;
+        max-width: 100%;
+        border-radius: 0;
+        border-top: none;
+        padding: 1rem 1.2rem;
+      }
+    }
+
+
+    /* ── SECCIÓN CITAS ── */
+    .booking-section {
+      background: var(--navy);
+      padding: 6rem 2rem;
+    }
+
+    .booking-section .section-eyebrow { color: var(--gold); }
+    .booking-section .section-title { color: var(--cream); }
+    .booking-section-inner { max-width: 1100px; margin: 0 auto; }
+    .booking-section-header { text-align: center; margin-bottom: 3rem; }
+    .booking-section-subtitle { color: var(--gray-light); font-size: 0.95rem; font-weight: 300; margin-top: 0.8rem; }
+
+    .booking-stepper { display: flex; align-items: center; justify-content: center; margin-bottom: 3rem; }
+    .bk-step-item { display: flex; align-items: center; gap: 0.6rem; }
+    .bk-step-num { width: 32px; height: 32px; border-radius: 50%; border: 2px solid rgba(200,168,75,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--gray-light); transition: all 0.3s; flex-shrink: 0; }
+    .bk-step-item.active .bk-step-num { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+    .bk-step-item.done .bk-step-num { background: var(--available); border-color: var(--available); color: #fff; }
+    .bk-step-label { font-size: 0.75rem; font-weight: 500; color: var(--gray-light); letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; display: none; }
+    .bk-step-item.active .bk-step-label, .bk-step-item.done .bk-step-label { display: block; }
+    .bk-step-item.active .bk-step-label { color: var(--gold); }
+    .bk-step-item.done .bk-step-label { color: var(--available); }
+    .bk-step-connector { width: 40px; height: 1px; background: rgba(200,168,75,0.2); margin: 0 0.5rem; }
+
+    .bk-grid { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
+
+    .cal-panel { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .cal-hdr { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; border-bottom: 1px solid var(--border); }
+    .cal-month-lbl { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); }
+    .cal-month-lbl span { color: var(--gold); }
+    .cal-nav-grp { display: flex; gap: 0.5rem; }
+    .cal-nav-b { width: 34px; height: 34px; border: 1px solid var(--border); background: transparent; border-radius: 4px; color: var(--gray-light); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-size: 1rem; }
+    .cal-nav-b:hover { background: var(--gold-faint); border-color: var(--gold); color: var(--gold); }
+    .cal-leg { display: flex; gap: 1.5rem; padding: 0.8rem 1.8rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .cal-leg-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--gray-light); letter-spacing: 0.04em; }
+    .cal-leg-dot { width: 10px; height: 10px; border-radius: 2px; }
+    .cal-days-hdr { display: grid; grid-template-columns: repeat(7, 1fr); padding: 0.6rem 1rem; border-bottom: 1px solid rgba(200,168,75,0.08); }
+    .cal-day-nm { text-align: center; font-size: 0.68rem; font-weight: 600; color: var(--gray-light); letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 0; }
+    .cal-body { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; padding: 1rem; }
+    .cal-cell { aspect-ratio: 1; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; transition: all 0.18s; border: 1px solid transparent; min-height: 48px; }
+    .cal-cell.empty { cursor: default; }
+    .cal-cell.past { opacity: 0.3; cursor: not-allowed; }
+    .cal-cell.has-slots { border-color: rgba(46,125,92,0.25); background: rgba(46,125,92,0.07); }
+    .cal-cell.has-slots:hover { border-color: var(--available); background: rgba(46,125,92,0.18); transform: translateY(-1px); }
+    .cal-cell.no-slots { opacity: 0.45; cursor: not-allowed; }
+    .cal-cell.selected { border-color: var(--gold) !important; background: rgba(200,168,75,0.15) !important; transform: translateY(-1px); }
+    .cal-cell.today .cell-num::after { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; margin: 2px auto 0; }
+    .cell-num { font-size: 0.9rem; font-weight: 500; color: var(--cream); line-height: 1; }
+    .cal-cell.selected .cell-num { color: var(--gold); font-weight: 700; }
+    .cal-cell.past .cell-num { color: var(--gray-light); }
+    .cell-slots { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.04em; color: var(--available); }
+    .cal-cell.no-slots .cell-slots { color: var(--gray-light); }
+    .cal-cell.selected .cell-slots { color: var(--gold-light); }
+
+    .bk-time-panel { padding: 1.4rem 1.8rem; border-top: 1px solid var(--border); display: none; }
+    .bk-time-panel.visible { display: block; }
+    .bk-time-title { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1rem; }
+    .bk-time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+    .bk-time-slot { padding: 0.6rem 0.4rem; border-radius: 5px; border: 1px solid rgba(46,125,92,0.3); background: rgba(46,125,92,0.06); text-align: center; cursor: pointer; transition: all 0.18s; font-size: 0.82rem; font-weight: 500; color: var(--cream); }
+    .bk-time-slot:hover { border-color: var(--available); background: rgba(46,125,92,0.2); }
+    .bk-time-slot.selected { border-color: var(--gold); background: rgba(200,168,75,0.18); color: var(--gold); font-weight: 700; }
+    .bk-time-slot.booked { border-color: rgba(255,255,255,0.06); background: transparent; color: var(--gray); cursor: not-allowed; text-decoration: line-through; opacity: 0.4; }
+
+    .bk-sidebar { display: flex; flex-direction: column; gap: 1.2rem; }
+    .bk-panel { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; }
+    .bk-panel-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1rem; }
+    .bk-type-options { display: flex; flex-direction: column; gap: 0.5rem; }
+    .bk-type-opt { display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid rgba(200,168,75,0.15); background: transparent; cursor: pointer; transition: all 0.2s; text-align: left; width: 100%; }
+    .bk-type-opt:hover { border-color: rgba(200,168,75,0.4); background: var(--gold-faint); }
+    .bk-type-opt.selected { border-color: var(--gold); background: rgba(200,168,75,0.1); }
+    .bk-type-ico { font-size: 1.3rem; flex-shrink: 0; }
+    .bk-type-nm { font-size: 0.88rem; font-weight: 600; color: var(--cream); display: block; }
+    .bk-type-opt.selected .bk-type-nm { color: var(--gold); }
+    .bk-type-dt { font-size: 0.72rem; color: var(--gray-light); margin-top: 0.15rem; }
+    .bk-sum-row { display: flex; justify-content: space-between; align-items: center; padding: 0.55rem 0; border-bottom: 1px solid rgba(200,168,75,0.08); font-size: 0.83rem; }
+    .bk-sum-row:last-child { border-bottom: none; }
+    .bk-sum-label { color: var(--gray-light); }
+    .bk-sum-value { color: var(--cream); font-weight: 600; text-align: right; }
+    .bk-sum-value.empty { color: var(--gray); font-weight: 400; font-style: italic; }
+    .bk-sum-value.gold { color: var(--gold); }
+    .bk-gold-line { display: block; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin: 1.5rem 0; border: none; }
+
+    .bk-step2 { display: none; }
+    .bk-step2.visible { display: block; }
+    .bk-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .bk-fg { display: flex; flex-direction: column; gap: 0.4rem; }
+    .bk-fg.full { grid-column: 1 / -1; }
+    .bk-lbl { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+    .bk-inp, .bk-sel, .bk-ta { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,168,75,0.2); border-radius: 4px; padding: 0.7rem 0.9rem; font-size: 0.9rem; font-family: 'Inter', sans-serif; color: var(--cream); transition: border-color 0.2s, background 0.2s; width: 100%; }
+    .bk-inp::placeholder, .bk-ta::placeholder { color: var(--gray); }
+    .bk-inp:focus, .bk-sel:focus, .bk-ta:focus { outline: none; border-color: var(--gold); background: rgba(200,168,75,0.05); }
+    .bk-sel option { background: var(--navy-mid); color: var(--cream); }
+    .bk-ta { resize: vertical; min-height: 90px; }
+    .bk-privacy { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.75rem; color: var(--gray-light); line-height: 1.5; margin-top: 0.5rem; }
+    .bk-privacy input[type="checkbox"] { width: auto; margin-top: 2px; accent-color: var(--gold); flex-shrink: 0; }
+    .bk-privacy-lbl { font-size: 0.75rem; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--gray-light); }
+
+    .btn-bk { width: 100%; background: var(--gold); color: var(--navy); border: none; padding: 1rem; font-size: 0.9rem; font-weight: 700; font-family: 'Inter', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 1.2rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn-bk:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-bk:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .btn-bk-out { width: 100%; background: transparent; color: var(--gray-light); border: 1px solid rgba(200,168,75,0.2); padding: 0.75rem; font-size: 0.82rem; font-weight: 500; font-family: 'Inter', sans-serif; letter-spacing: 0.05em; border-radius: 4px; cursor: pointer; transition: all 0.2s; margin-top: 0.6rem; }
+    .btn-bk-out:hover { border-color: var(--gold); color: var(--cream); }
+
+    .bk-confirm { display: none; text-align: center; padding: 4rem 2rem; }
+    .bk-confirm.visible { display: block; }
+    .bk-confirm-icon { width: 72px; height: 72px; background: rgba(46,125,92,0.15); border: 2px solid var(--available); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 2rem; }
+    .bk-confirm-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; }
+    .bk-confirm-sub { color: var(--gray-light); font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .bk-confirm-card { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; max-width: 480px; margin: 0 auto 2rem; text-align: left; }
+    .bk-confirm-row { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(200,168,75,0.08); }
+    .bk-confirm-row:last-child { border-bottom: none; }
+    .bk-confirm-ico { width: 36px; height: 36px; background: var(--gold-faint); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .bk-confirm-lbl { font-size: 0.68rem; color: var(--gray-light); text-transform: uppercase; letter-spacing: 0.1em; }
+    .bk-confirm-val { font-size: 0.9rem; color: var(--cream); font-weight: 600; margin-top: 0.1rem; }
+    .bk-confirm-note { font-size: 0.8rem; color: var(--gray-light); line-height: 1.6; margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .bk-confirm-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+    .bk-confirm-btn { padding: 0.75rem 1.6rem; border-radius: 4px; font-size: 0.83rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .bk-confirm-btn.primary { background: var(--gold); color: var(--navy); border: none; }
+    .bk-confirm-btn.primary:hover { background: var(--gold-light); }
+    .bk-confirm-btn.outline { background: transparent; color: var(--gray-light); border: 1px solid rgba(200,168,75,0.25); }
+    .bk-confirm-btn.outline:hover { border-color: var(--gold); color: var(--cream); }
+
+    @media (max-width: 768px) {
+      .booking-section { padding: 3rem 1.2rem; }
+      .booking-section-header { margin-bottom: 2rem; }
+      .booking-section-subtitle { font-size: 0.88rem; }
+      .bk-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .bk-sidebar { order: -1; }
+      .bk-time-grid { grid-template-columns: repeat(4, 1fr); }
+      .bk-form-grid { grid-template-columns: 1fr; }
+      .booking-stepper { gap: 0; }
+      .bk-step-label { display: none !important; }
+      .bk-confirm-actions { flex-direction: column; align-items: center; }
+      .bk-confirm-card { padding: 1.4rem 1.2rem; }
+      .cal-hdr { padding: 1.1rem 1.2rem; }
+      .cal-month-lbl { font-size: 1.1rem; }
+      .cal-leg { padding: 0.6rem 1.2rem; gap: 0.8rem; }
+      .bk-panel { padding: 1.1rem; }
+      .cal-body { padding: 0.7rem; gap: 3px; }
+      .cal-cell { min-height: 42px; }
+      .cell-num { font-size: 0.82rem; }
+      .cell-slots { font-size: 0.52rem; }
+    }
+
+    @media (max-width: 480px) {
+      .booking-section { padding: 2.5rem 1rem; }
+      .bk-time-grid { grid-template-columns: repeat(3, 1fr); }
+      .cal-body { gap: 2px; padding: 0.6rem; }
+      .cal-cell { min-height: 38px; }
+      .bk-confirm-title { font-size: 1.5rem; }
+      .bk-confirm-card { padding: 1.2rem 1rem; }
+    }
+
+    @media (max-width: 400px) {
+      .bk-time-grid { grid-template-columns: repeat(3, 1fr); }
+      .cal-body { gap: 2px; padding: 0.5rem; }
+      .cal-cell { min-height: 36px; }
+      .cal-day-nm { font-size: 0.58rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <a href="#hero">
+      <img src="logo.png" class="nav-logo"/>
+    </a>
+  </div>
+
+  <!-- Botón CTA central (móvil) -->
+  <a href="#citas" class="nav-mobile-cta" style="display:none;">📅 Solicitar Cita</a>
+
+  <!-- Hamburguesa (móvil) -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Links (escritorio siempre visible, móvil solo cuando abierto) -->
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#citas" class="nav-cta">Solicitar Cita</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Abogado en Granada · Nº colegiado 8312 ICAGR</p>
+    <h1 class="hero-title">
+      <span class="first-name">Isidro</span>
+      Rodríguez Hitos
+      <span class="signature-line"></span>
+    </h1>
+    <p class="hero-sub">Despacho jurídico multidisciplinar con 26 años de experiencia. Un equipo de abogados especializados que ofrece cobertura legal integral en todas las áreas del Derecho. Primera consulta gratuita.</p>
+    <div class="hero-badges">
+      <span class="badge">Penal</span>
+      <span class="badge">Civil</span>
+      <span class="badge">Extranjería</span>
+      <span class="badge">Familia</span>
+      <span class="badge">Laboral</span>
+      <span class="badge">Inmobiliario</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#citas" class="btn-primary">📅 Solicitar Cita</a>
+      <a href="tel:+34 744251656" class="btn-secondary">+34 744 251 656</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">26</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5★</div>
+        <div class="stat-label">Valoración media</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+30</div>
+        <div class="stat-label">Especialidades</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">9–20h</div>
+        <div class="stat-label">Atención directa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="container">
+    <p class="section-eyebrow">Quién soy</p>
+    <h2 class="section-title">Un abogado que<br>está cuando lo necesitas</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>Isidro Rodríguez Abogados</strong> es un despacho jurídico multidisciplinar con 26 años de trayectoria y una sólida presencia en Granada. Contamos con un equipo de abogados especializados en distintas ramas del Derecho que, gracias a su especialización individual, ofrecen una cobertura legal integral abarcando todas las áreas jurídicas con rigor y eficiencia.</p>
+        <p>Nuestra práctica abarca el <strong>Derecho Civil</strong> (contratos, herencias, familia, arrendamientos, responsabilidad civil), el <strong>Derecho Penal</strong> (defensa y acusación particular en todo tipo de procedimientos), el <strong>Derecho Laboral</strong> (despidos, reclamaciones salariales, incapacidades, acoso laboral), el <strong>Derecho Mercantil</strong> (constitución de sociedades, contratos, conflictos societarios), el <strong>Derecho Administrativo</strong> (procedimientos sancionadores, licencias, recursos) y el <strong>Derecho Bancario y Fiscal</strong> (cláusulas abusivas, ejecuciones hipotecarias, planificación fiscal, inspecciones de Hacienda).</p>
+        <p>En Isidro Rodríguez Abogados trabajamos con compromiso, profesionalidad y una vocación clara de servicio al cliente, buscando siempre la mejor solución legal para cada caso. La primera consulta es <strong>completamente gratuita</strong> y los honorarios se adaptan a cada situación.</p>
+        <div class="about-values">
+          <div class="value-item"><span class="value-dot"></span>Compromiso</div>
+          <div class="value-item"><span class="value-dot"></span>Experiencia</div>
+          <div class="value-item"><span class="value-dot"></span>Transparencia</div>
+          <div class="value-item"><span class="value-dot"></span>Trato cercano</div>
+        </div>
+      </div>
+      <div>
+        <div class="about-photo-wrap">
+          <img src="foto_perfil.png" alt="Isidro Rodríguez Hitos, abogado en Granada" class="about-photo"/>
+        </div>
+          
+      </div>
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .spec-item-penal img,
+  .spec-item-img img {
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+  }
+  .spec-item-penal:hover img,
+  .spec-item-img:hover img {
+    filter: grayscale(0%);
+  }
+</style>
+
+<!-- SPECIALTIES -->
+<style>
+  .spec-item-img img {
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+  }
+  .spec-item-img:hover img {
+    filter: grayscale(0%);
+  }
+</style>
+
+<section class="specialties" id="especialidades">
+  <div class="container">
+    <p class="section-eyebrow">Áreas de práctica</p>
+    <h2 class="section-title">Especialidades</h2>
+    <p class="specialties-intro" style="max-width:100%;">Cobertura jurídica integral en más de 30 áreas del Derecho. Cada miembro del equipo está especializado en su rama, garantizando asesoramiento experto en cualquier materia.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 3.5rem;">
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="penal.png" alt="Penal" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Penal</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="derecho_civil.png" alt="Civil" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Civil</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="extranjería.png" alt="Extranjería" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Extranjería</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="familia.png" alt="Familia" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Familia</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="laboral.png" alt="Laboral" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Laboral</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="inmobiliaria.png" alt="Inmobiliario" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Inmobiliario</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="divorcio.png" alt="Divorcios" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Divorcios</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="spec-item-img" style="position:relative; overflow:hidden; height:160px; border-radius:8px 8px 0 0;">
+          <img src="bancario.png" alt="Bancario" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+        </div>
+        <div style="background:var(--navy-mid); border: 1px solid rgba(200,168,75,0.2); border-top: 2px solid var(--gold); border-radius:0 0 8px 8px; padding: 0.75rem 1rem; text-align:center;">
+          <span style="color:var(--cream); font-size:0.8rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;">Bancario</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="opiniones">
+  <div class="container">
+    <div class="reviews-header">
+      <div>
+        <p class="section-eyebrow">Lo que dicen los clientes</p>
+        <h2 class="section-title">Opiniones reales</h2>
+      </div>
+      <div class="rating-summary">
+        <div class="rating-big">5.0</div>
+        <div class="rating-details">
+          <div class="stars">★★★★★</div>
+          <div class="count">20 valoraciones verificadas</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Gracias a Isidro por su gran trabajo y dedicación para salir de una situación que estaba bastante negra. Súper agradecida por su gran profesionalidad. Muchas gracias por todo, sin ti nada habría sido posible.</p>
+        <div class="review-meta">
+          <div>
+            <div class="reviewer-name">Claudia Hita Castaño</div>
+            <div class="review-spec">Derecho Civil</div>
+          </div>
+          <div class="review-date">Jun 2026</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Necesité un abogado con urgencia y logré contactar con Isidro Rodríguez, quien me atendió de muy buena forma y logró solucionar mi problema en 24 horas. Doy buena fe del trabajo y su eficiencia.</p>
+        <div class="review-meta">
+          <div>
+            <div class="reviewer-name">Jose Ignacio Riascos</div>
+            <div class="review-spec">Derecho Penal</div>
+          </div>
+          <div class="review-date">Abr 2026</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Muy sorprendido del gran trato de Isidro y la transparencia con la que me ha atendido.</p>
+        <div class="review-meta">
+          <div>
+            <div class="reviewer-name">Youssef Gaouy</div>
+            <div class="review-spec">Tributario · Fiscal</div>
+          </div>
+          <div class="review-date">Abr 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--gold)">Cómo trabajamos</p>
+    <h2 class="section-title">Tu caso, paso a paso</h2>
+    <div class="how-steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3 class="step-title">Consulta inicial</h3>
+        <p class="step-desc">Nos cuéntás tu caso de forma confidencial por teléfono, WhatsApp o videollamada. Sin compromisos. Analizamos juntos la situación.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3 class="step-title">Estrategia clara</h3>
+        <p class="step-desc">Te presentamos una estrategia honesta. Intentamos llegar a acuerdos siempre que sea posible y te explicamos cada paso sin tecnicismos. Los honorarios se detallan por escrito antes de comenzar.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3 class="step-title">Resolución</h3>
+        <p class="step-desc">Actuamos con un equipo especializado. Honorarios adaptados a tu situación — sin sorpresas. Presupuesto personalizado y facilidades de pago según el caso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-side">
+        <p class="section-eyebrow">Contacto</p>
+        <h2 class="section-title">Cuéntanos<br>tu caso</h2>
+        <p>Completa el formulario y te contactamos en el menor tiempo posible. También puedes llamarnos directamente o escribirnos por WhatsApp.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-item">
+            <div class="cd-icon">📞</div>
+            <div>
+              <div class="cd-label">Teléfono</div>
+              <div class="cd-value"><a href="tel:+34 744251656">+34 744 251 656</a></div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="cd-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+            <div>
+              <div class="cd-label">WhatsApp</div>
+              <div class="cd-value"><a href="https://wa.me/34744251656" target="_blank">Escribir mensaje</a></div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="cd-icon">📍</div>
+            <div>
+              <div class="cd-label">Despacho</div>
+              <div class="cd-value">C/ Acera del Darro nº 94, 2ºE<br>18100 Armilla, Granada</div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="cd-icon">🕐</div>
+            <div>
+              <div class="cd-label">Horario</div>
+              <div class="cd-value">Lunes a viernes · 9:00 – 20:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <p class="form-title">Solicita consulta</p>
+        <p class="form-subtitle">Sin compromiso · Respuesta en menos de 24 horas</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" placeholder="Tus apellidos">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="tu@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Área del Derecho</label>
+          <select>
+            <option value="">— Selecciona una especialidad —</option>
+            <option>Penal</option>
+            <option>Civil</option>
+            <option>Extranjería y Nacionalidad</option>
+            <option>Familia y Divorcios</option>
+            <option>Laboral</option>
+            <option>Inmobiliario</option>
+            <option>Herencias y Sucesiones</option>
+            <option>Administrativo</option>
+            <option>Mercantil</option>
+            <option>Bancario</option>
+            <option>Fiscal</option>
+            <option>Accidentes</option>
+            <option>Concursal</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tipo de consulta</label>
+          <select>
+            <option>Llamada telefónica</option>
+            <option>WhatsApp</option>
+            <option>Videollamada</option>
+            <option>Visita presencial</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos tu caso</label>
+          <textarea placeholder="Describe brevemente tu situación..."></textarea>
+        </div>
+        <button class="form-submit" onclick="this.textContent='✓ Solicitud enviada'; this.style.background='#2D6A4F';">Enviar consulta gratuita</button>
+        <p class="form-note">Al enviar, aceptas que recojamos tus datos para poder ponernos en contacto contigo para resolver tu consulta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- CITAS -->
+<section class="booking-section" id="citas">
+  <div class="booking-section-inner">
+
+    <div class="booking-section-header">
+      <p class="section-eyebrow">Despacho · Granada</p>
+      <h2 class="section-title" style="color:var(--cream)">Solicitar Consulta</h2>
+      <p class="booking-section-subtitle">Selecciona una fecha, elige tu franja horaria y confirma en segundos.</p>
+    </div>
+
+    <!-- STEPPER -->
+    <div class="booking-stepper" id="bk-stepper">
+      <div class="bk-step-item active" id="bk-step-1">
+        <div class="bk-step-num" id="bk-num-1">1</div>
+        <div class="bk-step-label">Fecha y hora</div>
+      </div>
+      <div class="bk-step-connector"></div>
+      <div class="bk-step-item" id="bk-step-2">
+        <div class="bk-step-num" id="bk-num-2">2</div>
+        <div class="bk-step-label">Tus datos</div>
+      </div>
+      <div class="bk-step-connector"></div>
+      <div class="bk-step-item" id="bk-step-3">
+        <div class="bk-step-num" id="bk-num-3">3</div>
+        <div class="bk-step-label">Confirmación</div>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div id="bk-view1">
+      <div class="bk-grid">
+
+        <!-- CALENDAR -->
+        <div class="cal-panel">
+          <div class="cal-hdr">
+            <div class="cal-month-lbl" id="bk-cal-month">Julio <span>2026</span></div>
+            <div class="cal-nav-grp">
+              <button class="cal-nav-b" onclick="bkChangeMonth(-1)">&#8249;</button>
+              <button class="cal-nav-b" onclick="bkChangeMonth(1)">&#8250;</button>
+            </div>
+          </div>
+          <div class="cal-leg">
+            <div class="cal-leg-item">
+              <div class="cal-leg-dot" style="background:rgba(46,125,92,0.4);"></div>
+              Huecos disponibles
+            </div>
+            <div class="cal-leg-item">
+              <div class="cal-leg-dot" style="background:rgba(200,168,75,0.3); border:1px solid var(--gold);"></div>
+              Día seleccionado
+            </div>
+            <div class="cal-leg-item">
+              <div class="cal-leg-dot" style="background:rgba(255,255,255,0.08);"></div>
+              Sin disponibilidad
+            </div>
+          </div>
+          <div class="cal-days-hdr">
+            <div class="cal-day-nm">L</div>
+            <div class="cal-day-nm">M</div>
+            <div class="cal-day-nm">X</div>
+            <div class="cal-day-nm">J</div>
+            <div class="cal-day-nm">V</div>
+            <div class="cal-day-nm" style="color:rgba(155,163,175,0.4)">S</div>
+            <div class="cal-day-nm" style="color:rgba(155,163,175,0.4)">D</div>
+          </div>
+          <div class="cal-body" id="bk-cal-grid"></div>
+          <div class="bk-time-panel" id="bk-time-panel">
+            <div class="bk-time-title" id="bk-time-title">Horas disponibles</div>
+            <div class="bk-time-grid" id="bk-time-grid"></div>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="bk-sidebar">
+          <div class="bk-panel">
+            <div class="bk-panel-title">Tipo de consulta</div>
+            <div class="bk-type-options">
+              <button class="bk-type-opt selected" onclick="bkSelectType(this,'Presencial','C/ Acera del Darro, Granada','🏛️')">
+                <div class="bk-type-ico">🏛️</div>
+                <div>
+                  <span class="bk-type-nm">Presencial</span>
+                  <div class="bk-type-dt">En el despacho · Granada</div>
+                </div>
+              </button>
+              <button class="bk-type-opt" onclick="bkSelectType(this,'Videollamada','Google Meet / Teams','🎥')">
+                <div class="bk-type-ico">🎥</div>
+                <div>
+                  <span class="bk-type-nm">Videollamada</span>
+                  <div class="bk-type-dt">Google Meet o Teams</div>
+                </div>
+              </button>
+              <button class="bk-type-opt" onclick="bkSelectType(this,'Telefónica','+34 744 251 656','📞')">
+                <div class="bk-type-ico">📞</div>
+                <div>
+                  <span class="bk-type-nm">Telefónica</span>
+                  <div class="bk-type-dt">Le llamamos nosotros</div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="bk-panel">
+            <div class="bk-panel-title">Tu cita</div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Modalidad</span>
+              <span class="bk-sum-value gold" id="bk-sum-type">Presencial</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Fecha</span>
+              <span class="bk-sum-value empty" id="bk-sum-date">Elige una fecha</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Hora</span>
+              <span class="bk-sum-value empty" id="bk-sum-time">Elige una hora</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Duración</span>
+              <span class="bk-sum-value">45 min</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Primera consulta</span>
+              <span class="bk-sum-value" style="color:var(--available)">Gratuita ✓</span>
+            </div>
+            <hr class="bk-gold-line">
+            <button class="btn-bk" id="bk-btn-continue" disabled onclick="bkGoStep2()">
+              Continuar con mis datos →
+            </button>
+          </div>
+
+          <div class="bk-panel" style="font-size:0.78rem; color:var(--gray-light); line-height:1.7;">
+            <div style="display:flex;gap:0.5rem;align-items:flex-start;margin-bottom:0.6rem;">
+              <span style="color:var(--gold);font-size:1rem;">✓</span>
+              <span>Primera consulta siempre <strong style="color:var(--cream)">gratuita</strong> y sin compromiso.</span>
+            </div>
+            <div style="display:flex;gap:0.5rem;align-items:flex-start;margin-bottom:0.6rem;">
+              <span style="color:var(--gold);font-size:1rem;">✓</span>
+              <span>Recibirás confirmación por email o WhatsApp al instante.</span>
+            </div>
+            <div style="display:flex;gap:0.5rem;align-items:flex-start;">
+              <span style="color:var(--gold);font-size:1rem;">✓</span>
+              <span>Cancela o modifica hasta <strong style="color:var(--cream)">24 h</strong> antes sin coste.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /bk-view1 -->
+
+    <!-- STEP 2 -->
+    <div id="bk-view2" class="bk-step2">
+      <div class="bk-grid">
+        <div>
+          <div class="bk-panel" style="display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;margin-bottom:1.5rem;padding:1rem 1.5rem;">
+            <div style="font-size:1.5rem;" id="bk-s2-icon">🏛️</div>
+            <div style="flex:1;">
+              <div style="font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;margin-bottom:0.15rem;">Cita seleccionada</div>
+              <div style="font-size:1rem;font-weight:600;color:var(--cream);" id="bk-s2-datetime">—</div>
+              <div style="font-size:0.82rem;color:var(--gray-light);" id="bk-s2-typeloc">—</div>
+            </div>
+            <button class="btn-bk-out" onclick="bkGoStep1()" style="width:auto;margin:0;padding:0.5rem 1rem;font-size:0.75rem;">Cambiar</button>
+          </div>
+
+          <div class="bk-panel">
+            <div class="bk-panel-title">Tus datos de contacto</div>
+            <p class="bk-required-note">Todos los campos son obligatorios</p>
+            <div class="bk-form-grid">
+              <div class="bk-fg">
+                <label class="bk-lbl" for="bk-nombre">Nombre</label>
+                <input class="bk-inp" type="text" id="bk-nombre" placeholder="María" autocomplete="given-name">
+              </div>
+              <div class="bk-fg">
+                <label class="bk-lbl" for="bk-apellidos">Apellidos</label>
+                <input class="bk-inp" type="text" id="bk-apellidos" placeholder="García Martínez" autocomplete="family-name">
+              </div>
+              <div class="bk-fg">
+                <label class="bk-lbl" for="bk-email">Email</label>
+                <input class="bk-inp" type="email" id="bk-email" placeholder="maria@ejemplo.com" autocomplete="email">
+              </div>
+              <div class="bk-fg">
+                <label class="bk-lbl" for="bk-tel">Teléfono</label>
+                <input class="bk-inp" type="tel" id="bk-tel" placeholder="+34 600 000 000" autocomplete="tel">
+              </div>
+              <div class="bk-fg full">
+                <label class="bk-lbl" for="bk-area">Área jurídica</label>
+                <select class="bk-sel" id="bk-area">
+                  <option value="">Selecciona el área</option>
+                  <option>Derecho Penal</option>
+                  <option>Derecho Civil</option>
+                  <option>Extranjería e Inmigración</option>
+                  <option>Derecho Laboral</option>
+                  <option>Derecho de Familia</option>
+                  <option>Derecho Administrativo</option>
+                  <option>Herencias y Sucesiones</option>
+                  <option>Accidentes de Tráfico</option>
+                  <option>Derecho Mercantil</option>
+                  <option>Propiedad Intelectual</option>
+                  <option>Otra área</option>
+                </select>
+              </div>
+              <div class="bk-fg full">
+                <label class="bk-lbl" for="bk-consulta">Descripción breve de tu caso</label>
+                <textarea class="bk-ta" id="bk-consulta" placeholder="Explica en pocas palabras el motivo de tu consulta para que el abogado pueda prepararse con antelación..."></textarea>
+              </div>
+            </div>
+            <div class="bk-privacy">
+              <input type="checkbox" id="bk-privacy">
+              <label class="bk-privacy-lbl" for="bk-privacy">
+                He leído y acepto la <a href="#" style="color:var(--gold);">Política de Privacidad</a>. Los datos facilitados se usarán exclusivamente para gestionar la cita solicitada.
+              </label>
+            </div>
+            <button class="btn-bk" onclick="bkSubmit()">Confirmar cita →</button>
+            <button class="btn-bk-out" onclick="bkGoStep1()">← Volver al calendario</button>
+          </div>
+        </div>
+
+        <div class="bk-sidebar">
+          <div class="bk-panel">
+            <div class="bk-panel-title">Resumen de tu cita</div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Modalidad</span>
+              <span class="bk-sum-value gold" id="bk-s2-sum-type">—</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Fecha</span>
+              <span class="bk-sum-value" id="bk-s2-sum-date">—</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Hora</span>
+              <span class="bk-sum-value" id="bk-s2-sum-time">—</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Duración</span>
+              <span class="bk-sum-value">45 min</span>
+            </div>
+            <div class="bk-sum-row">
+              <span class="bk-sum-label">Precio</span>
+              <span class="bk-sum-value" style="color:var(--available)">Gratuita</span>
+            </div>
+          </div>
+          <div class="bk-panel" style="border-color:rgba(46,125,92,0.3);background:rgba(46,125,92,0.05);">
+            <div style="display:flex;gap:0.6rem;align-items:center;margin-bottom:0.8rem;">
+              <span style="font-size:1.1rem;">🔒</span>
+              <span style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--available);">Confidencialidad garantizada</span>
+            </div>
+            <p style="font-size:0.78rem;color:var(--gray-light);line-height:1.65;">
+              Toda la información que compartas está protegida por el secreto profesional del abogado y la LOPD. Nunca se comparte con terceros.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><!-- /bk-view2 -->
+
+    <!-- STEP 3 CONFIRMATION -->
+    <div class="bk-confirm" id="bk-view3">
+      <div class="bk-confirm-icon">✓</div>
+      <h2 class="bk-confirm-title">¡Cita confirmada!</h2>
+      <p class="bk-confirm-sub">Recibirás un correo y un WhatsApp con todos los detalles en breve.</p>
+      <div class="bk-confirm-card">
+        <div class="bk-confirm-row">
+          <div class="bk-confirm-ico">👤</div>
+          <div>
+            <div class="bk-confirm-lbl">Cliente</div>
+            <div class="bk-confirm-val" id="bk-conf-name">—</div>
+          </div>
+        </div>
+        <div class="bk-confirm-row">
+          <div class="bk-confirm-ico" id="bk-conf-ico-type">🏛️</div>
+          <div>
+            <div class="bk-confirm-lbl">Modalidad</div>
+            <div class="bk-confirm-val" id="bk-conf-type">—</div>
+          </div>
+        </div>
+        <div class="bk-confirm-row">
+          <div class="bk-confirm-ico">📅</div>
+          <div>
+            <div class="bk-confirm-lbl">Fecha y hora</div>
+            <div class="bk-confirm-val" id="bk-conf-datetime">—</div>
+          </div>
+        </div>
+        <div class="bk-confirm-row">
+          <div class="bk-confirm-ico">⚖️</div>
+          <div>
+            <div class="bk-confirm-lbl">Área jurídica</div>
+            <div class="bk-confirm-val" id="bk-conf-area">—</div>
+          </div>
+        </div>
+        <div class="bk-confirm-row">
+          <div class="bk-confirm-ico">📞</div>
+          <div>
+            <div class="bk-confirm-lbl">Contacto del despacho</div>
+            <div class="bk-confirm-val">+34 744 251 656</div>
+          </div>
+        </div>
+      </div>
+      <p class="bk-confirm-note">Si necesitas modificar o cancelar la cita, contáctanos con al menos <strong style="color:var(--cream)">24 horas de antelación</strong> por teléfono o WhatsApp.</p>
+      <div class="bk-confirm-actions">
+        <a href="https://wa.me/34744251656" target="_blank" class="bk-confirm-btn primary">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.471 2.027 7.774L0 32l8.476-2.003A15.934 15.934 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 21.617c-.398-.2-2.355-1.162-2.72-1.294-.366-.133-.632-.2-.898.2-.266.398-1.03 1.294-1.263 1.56-.232.265-.465.298-.863.1-.398-.2-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.765-.013c-.265 0-.698.1-1.063.498-.366.398-1.396 1.363-1.396 3.326s1.43 3.857 1.629 4.123c.2.265 2.814 4.297 6.82 6.028.953.411 1.696.657 2.275.841.956.304 1.826.261 2.514.158.767-.114 2.355-.963 2.688-1.893.332-.93.332-1.727.232-1.893-.099-.166-.365-.265-.763-.465z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <button class="bk-confirm-btn outline" onclick="bkReset()">← Nueva cita</button>
+      </div>
+    </div><!-- /bk-view3 -->
+
+  </div><!-- /booking-section-inner -->
+</section>
+
+<script>
+// ── BOOKING STATE ──
+const bkState = {
+  selectedDate: null,
+  selectedTime: null,
+  selectedType: 'Presencial',
+  selectedTypeIcon: '🏛️',
+  selectedTypeLoc: 'C/ Acera del Darro, Granada',
+  currentMonth: new Date().getMonth(),
+  currentYear: new Date().getFullYear(),
+};
+
+function bkGetAvailability(year, month) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const data = {};
+  const baseSlots = ['09:00','09:45','10:30','11:15','12:00','16:00','16:45','17:30','18:15','19:00'];
+  const booked = { 3:[0,2,5], 7:[1,3,4,6,7], 10:[0,1,2,3,4], 14:[2,5,8], 17:[0,3], 21:[1,4,7,9], 24:[0,2,3,5,6,8] };
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  for(let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(year, month, d);
+    if(date < today) continue;
+    const dow = date.getDay();
+    if(dow === 0 || dow === 6) continue;
+    const bookedIdx = booked[d] || [];
+    const slots = baseSlots.map((t,i) => ({ time: t, booked: bookedIdx.includes(i) }));
+    data[d] = { slots, freeCount: slots.filter(s => !s.booked).length };
+  }
+  return data;
+}
+
+function bkRenderCalendar() {
+  const year = bkState.currentYear, month = bkState.currentMonth;
+  const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  document.getElementById('bk-cal-month').innerHTML = `${monthNames[month]} <span>${year}</span>`;
+  const avail = bkGetAvailability(year, month);
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  let firstDow = new Date(year, month, 1).getDay();
+  firstDow = (firstDow + 6) % 7;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const grid = document.getElementById('bk-cal-grid');
+  grid.innerHTML = '';
+  for(let i = 0; i < firstDow; i++) {
+    const c = document.createElement('div'); c.className = 'cal-cell empty'; grid.appendChild(c);
+  }
+  for(let d = 1; d <= daysInMonth; d++) {
+    const cell = document.createElement('div');
+    const date = new Date(year, month, d);
+    const isToday = date.getTime() === today.getTime();
+    const av = avail[d], isPast = date < today;
+    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+    const isSel = bkState.selectedDate && bkState.selectedDate.getDate() === d && bkState.selectedDate.getMonth() === month && bkState.selectedDate.getFullYear() === year;
+    let cls = 'cal-cell';
+    if(isPast || isWeekend) cls += ' past';
+    else if(av && av.freeCount > 0) cls += ' has-slots';
+    else cls += ' no-slots';
+    if(isToday) cls += ' today';
+    if(isSel) cls += ' selected';
+    cell.className = cls;
+    cell.innerHTML = `<div class="cell-num">${d}</div>${av && !isPast && !isWeekend ? `<div class="cell-slots">${av.freeCount > 0 ? av.freeCount+' libres' : 'completo'}</div>` : ''}`;
+    if(av && av.freeCount > 0 && !isPast && !isWeekend) {
+      cell.addEventListener('click', () => bkSelectDate(d, month, year, av.slots));
+    }
+    grid.appendChild(cell);
+  }
+  if(bkState.selectedDate && bkState.selectedDate.getMonth() === month && bkState.selectedDate.getFullYear() === year && avail[bkState.selectedDate.getDate()]) {
+    bkShowSlots(avail[bkState.selectedDate.getDate()].slots);
+  } else if(bkState.selectedDate && (bkState.selectedDate.getMonth() !== month || bkState.selectedDate.getFullYear() !== year)) {
+    bkState.selectedDate = null; bkState.selectedTime = null; bkUpdateSummary();
+  }
+}
+
+function bkChangeMonth(dir) {
+  bkState.currentMonth += dir;
+  if(bkState.currentMonth > 11) { bkState.currentMonth = 0; bkState.currentYear++; }
+  if(bkState.currentMonth < 0) { bkState.currentMonth = 11; bkState.currentYear--; }
+  bkRenderCalendar();
+  document.getElementById('bk-time-panel').classList.remove('visible');
+}
+
+function bkSelectDate(day, month, year, slots) {
+  bkState.selectedDate = new Date(year, month, day);
+  bkState.selectedTime = null;
+  bkUpdateSummary(); bkRenderCalendar(); bkShowSlots(slots);
+}
+
+function bkShowSlots(slots) {
+  const panel = document.getElementById('bk-time-panel');
+  const title = document.getElementById('bk-time-title');
+  const grid = document.getElementById('bk-time-grid');
+  panel.classList.add('visible');
+  const ds = bkState.selectedDate.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long' });
+  title.textContent = ds.charAt(0).toUpperCase() + ds.slice(1);
+  grid.innerHTML = '';
+  slots.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'bk-time-slot' + (s.booked ? ' booked' : '') + (bkState.selectedTime === s.time ? ' selected' : '');
+    btn.textContent = s.time; btn.disabled = s.booked;
+    if(!s.booked) btn.addEventListener('click', () => bkSelectTime(s.time));
+    grid.appendChild(btn);
+  });
+}
+
+function bkSelectTime(time) {
+  bkState.selectedTime = time; bkUpdateSummary();
+  const av = bkGetAvailability(bkState.currentYear, bkState.currentMonth);
+  const da = av[bkState.selectedDate.getDate()];
+  if(da) bkShowSlots(da.slots);
+}
+
+function bkUpdateSummary() {
+  const sd = document.getElementById('bk-sum-date'), st = document.getElementById('bk-sum-time');
+  const btn = document.getElementById('bk-btn-continue');
+  if(bkState.selectedDate) { sd.textContent = bkState.selectedDate.toLocaleDateString('es-ES', { weekday:'short', day:'numeric', month:'long' }); sd.classList.remove('empty'); }
+  else { sd.textContent = 'Elige una fecha'; sd.classList.add('empty'); }
+  if(bkState.selectedTime) { st.textContent = bkState.selectedTime + ' h'; st.classList.remove('empty'); }
+  else { st.textContent = 'Elige una hora'; st.classList.add('empty'); }
+  btn.disabled = !(bkState.selectedDate && bkState.selectedTime);
+}
+
+function bkSelectType(btn, name, loc, icon) {
+  document.querySelectorAll('.bk-type-opt').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  bkState.selectedType = name; bkState.selectedTypeIcon = icon; bkState.selectedTypeLoc = loc;
+  document.getElementById('bk-sum-type').textContent = name;
+}
+
+function bkSetStep(n) {
+  [1,2,3].forEach(i => {
+    const item = document.getElementById('bk-step-'+i);
+    const num = document.getElementById('bk-num-'+i);
+    item.classList.remove('active','done');
+    if(i < n) { item.classList.add('done'); num.innerHTML = '✓'; }
+    else if(i === n) { item.classList.add('active'); num.textContent = i; }
+    else { num.textContent = i; }
+  });
+}
+
+function bkGoStep2() {
+  if(!bkState.selectedDate || !bkState.selectedTime) return;
+  const ds = bkState.selectedDate.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  const dtStr = ds.charAt(0).toUpperCase() + ds.slice(1) + ' · ' + bkState.selectedTime + ' h';
+  document.getElementById('bk-s2-icon').textContent = bkState.selectedTypeIcon;
+  document.getElementById('bk-s2-datetime').textContent = dtStr;
+  document.getElementById('bk-s2-typeloc').textContent = bkState.selectedType + ' — ' + bkState.selectedTypeLoc;
+  document.getElementById('bk-s2-sum-type').textContent = bkState.selectedType;
+  document.getElementById('bk-s2-sum-date').textContent = bkState.selectedDate.toLocaleDateString('es-ES', { weekday:'short', day:'numeric', month:'long' });
+  document.getElementById('bk-s2-sum-time').textContent = bkState.selectedTime + ' h';
+  bkSetStep(2);
+  document.getElementById('bk-view1').style.display = 'none';
+  document.getElementById('bk-view2').classList.add('visible');
+  document.getElementById('citas').scrollIntoView({ behavior: 'smooth' });
+}
+
+function bkGoStep1() {
+  bkSetStep(1);
+  document.getElementById('bk-view1').style.display = 'block';
+  document.getElementById('bk-view2').classList.remove('visible');
+  document.getElementById('citas').scrollIntoView({ behavior: 'smooth' });
+}
+
+function bkSubmit() {
+  const nombre = document.getElementById('bk-nombre').value.trim();
+  const apellidos = document.getElementById('bk-apellidos').value.trim();
+  const email = document.getElementById('bk-email').value.trim();
+  const tel = document.getElementById('bk-tel').value.trim();
+  const area = document.getElementById('bk-area').value;
+  const privacy = document.getElementById('bk-privacy').checked;
+  if(!nombre || !apellidos || !email || !tel || !area || !privacy) {
+    alert('Por favor, completa todos los campos y acepta la política de privacidad.'); return;
+  }
+  const ds = bkState.selectedDate.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  document.getElementById('bk-conf-name').textContent = nombre + ' ' + apellidos;
+  document.getElementById('bk-conf-ico-type').textContent = bkState.selectedTypeIcon;
+  document.getElementById('bk-conf-type').textContent = bkState.selectedType + ' — ' + bkState.selectedTypeLoc;
+  document.getElementById('bk-conf-datetime').textContent = ds.charAt(0).toUpperCase() + ds.slice(1) + ' a las ' + bkState.selectedTime + ' h';
+  document.getElementById('bk-conf-area').textContent = area;
+  bkSetStep(3);
+  document.getElementById('bk-view2').classList.remove('visible');
+  document.getElementById('bk-view3').classList.add('visible');
+  document.getElementById('citas').scrollIntoView({ behavior: 'smooth' });
+}
+
+function bkReset() {
+  bkState.selectedDate = null; bkState.selectedTime = null;
+  bkSetStep(1);
+  document.getElementById('bk-view3').classList.remove('visible');
+  document.getElementById('bk-view2').classList.remove('visible');
+  document.getElementById('bk-view1').style.display = 'block';
+  bkRenderCalendar(); bkUpdateSummary();
+  document.getElementById('bk-time-panel').classList.remove('visible');
+  document.getElementById('citas').scrollIntoView({ behavior: 'smooth' });
+}
+
+bkRenderCalendar();
+bkUpdateSummary();
+</script>
+
+<!-- MAP -->
+<section class="map-section" id="ubicacion">
+  <div class="map-header">
+    <div class="container">
+      <p class="section-eyebrow">Cómo llegar</p>
+      <h2 class="section-title" style="color:var(--cream)">Encuéntranos</h2>
+      <p class="map-address-text">C/ Acera del Darro nº 94, 2ºE &middot; 18100 Armilla, Granada</p>
+    </div>
+  </div>
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-3.6450%2C37.1360%2C-3.6200%2C37.1460&layer=mapnik&marker=37.1390%2C-3.6315"
+      width="100%"
+      height="420"
+      frameborder="0"
+      style="border:0;display:block;"
+      allowfullscreen
+      loading="lazy"
+      title="Ubicación despacho Isidro Rodríguez Hitos">
+    </iframe>
+    <div class="map-pin-card">
+      <div class="pin-icon">📍</div>
+      <div class="pin-info">
+        <strong>Isidro Rodríguez Hitos</strong>
+        <span>C/ Acera del Darro nº 94, 2ºE</span>
+        <span>18100 Armilla, Granada</span>
+      </div>
+      <a class="pin-directions"
+         href="https://www.google.com/maps/dir/?api=1&destination=Calle+Acera+del+Darro+94+Armilla+Granada"
+         target="_blank" rel="noopener">
+        Cómo llegar &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+<div class="footer-logo-wrap">
+  <img src="logo.png" style="width: 60px; height: auto;">
+</div>
+  <div class="footer-name">Isidro Rodríguez Hitos</div>
+  <div class="footer-info">
+    Abogado en Granada · Nº Colegiado 8312 · ICAGR<br>
+    C/ Acera del Darro nº 94, 2ºE, 18100 Armilla, Granada · +34 744 251 656
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-links">
+    <a href="#sobre">Sobre mí</a>
+    <a href="#especialidades">Especialidades</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#citas">Solicitar Cita</a>
+    <a href="#contacto">Contacto</a>
+    <a href="tel:+34 744251656">+34 744 251 656</a>
+  </div>
+  <p class="footer-copy">© 2026 Isidro Rodríguez Hitos · Todos los derechos reservados</p>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0,0,0,0.2);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6), 0 4px 12px rgba(0,0,0,0.25);
+  }
+
+  .whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+    fill: #ffffff;
+  }
+
+  .whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    background: #fff;
+    color: #0D1B2A;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  .whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .whatsapp-float {
+      bottom: 20px;
+      right: 20px;
+      width: 54px;
+      height: 54px;
+    }
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+</style>
+
+<a
+  class="whatsapp-float"
+  href="https://wa.me/34744251656"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+>
+  <span class="whatsapp-tooltip">Escríbenos por WhatsApp</span>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.471 2.027 7.774L0 32l8.476-2.003A15.934 15.934 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.77-1.853l-.485-.288-5.03 1.188 1.215-4.896-.317-.502A13.267 13.267 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.87c-.398-.2-2.355-1.162-2.72-1.294-.366-.133-.632-.2-.898.2-.266.398-1.03 1.294-1.263 1.56-.232.265-.465.298-.863.1-.398-.2-1.68-.619-3.2-1.974-1.183-1.054-1.982-2.356-2.214-2.754-.232-.398-.025-.613.174-.81.179-.178.398-.465.598-.698.2-.232.265-.398.398-.664.133-.265.066-.498-.033-.698-.1-.2-.898-2.163-1.23-2.961-.324-.778-.653-.672-.898-.685l-.765-.013c-.265 0-.698.1-1.063.498-.366.398-1.396 1.363-1.396 3.326s1.43 3.857 1.629 4.123c.2.265 2.814 4.297 6.82 6.028.953.411 1.696.657 2.275.841.956.304 1.826.261 2.514.158.767-.114 2.355-.963 2.688-1.893.332-.93.332-1.727.232-1.893-.099-.166-.365-.265-.763-.465z"/>
+  </svg>
+</a>
+
+</body>
+</html>

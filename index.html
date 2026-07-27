@@ -1218,6 +1218,66 @@
       .signature-line { animation: none; width: 100%; }
     }
 
+    /* STOREFRONT PARALLAX (sticky-based: no usa background-attachment:fixed,
+       que en muchos navegadores desactiva el scroll suave nativo) */
+    .storefront-parallax {
+      position: relative;
+      height: 155vh;
+      overflow: hidden;
+    }
+    .storefront-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      min-height: 420px;
+      max-height: 640px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .storefront-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .storefront-sticky::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(5,10,15,0.15) 0%, rgba(5,10,15,0.35) 55%, rgba(5,10,15,0.85) 100%);
+    }
+    .storefront-caption {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 3rem 2.5rem;
+      color: var(--cream);
+    }
+    .storefront-caption .section-eyebrow { color: var(--gold-light); }
+    .storefront-caption h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-top: 0.4rem;
+      max-width: 640px;
+    }
+    .storefront-caption p {
+      margin-top: 0.6rem;
+      color: var(--gray-light);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+    @media (max-width: 900px) {
+      /* En móvil se mantiene simple: sin efecto sticky, solo la foto */
+      .storefront-parallax { height: 50vh; min-height: 340px; }
+      .storefront-sticky { position: static; height: 100%; }
+      .storefront-caption { padding: 2rem 1.4rem; }
+    }
+
     /* MAP */
     .map-section { background: var(--navy); }
     .map-header { padding: 4rem 2rem 2rem; }
@@ -1451,6 +1511,26 @@
       navLinks.classList.remove('open');
       hamburger.classList.remove('open');
       hamburger.setAttribute('aria-label', 'Abrir menú');
+    });
+  });
+})();
+
+// Scroll suave garantizado para todos los enlaces internos (#ancla),
+// independiente de "scroll-behavior: smooth" del navegador.
+(function () {
+  const nav = document.querySelector('nav');
+  const navOffset = function () { return (nav ? nav.offsetHeight : 0) + 12; };
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      const id = link.getAttribute('href');
+      if (!id || id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.pageYOffset - navOffset();
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      history.pushState(null, '', id);
     });
   });
 })();
@@ -1879,6 +1959,18 @@
     hideEventTypeDetails: false,
   });
 </script>
+
+<!-- FACHADA / PARALLAX -->
+<section class="storefront-parallax" aria-label="Fachada del despacho IRH Abogados">
+  <div class="storefront-sticky">
+    <img class="storefront-img" src="fachada-despacho.jpeg" alt="Fachada del despacho IRH Abogados en Avenida Poniente 76, Armilla" loading="lazy">
+    <div class="storefront-caption">
+      <p class="section-eyebrow">Nuestro despacho</p>
+      <h2>Así nos encontrarás en Avenida Poniente, 76</h2>
+      <p>Un espacio pensado para atenderte con cercanía y discreción, en el corazón de Armilla.</p>
+    </div>
+  </div>
+</section>
 
 <!-- MAP -->
 <section class="map-section" id="ubicacion">
